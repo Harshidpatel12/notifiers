@@ -126,10 +126,7 @@ class AsyncRequestsHelper:
         :return: A tuple of (response, errors)
         """
         if httpx is None:
-            raise RuntimeError(
-                "The 'httpx' library is required for asynchronous requests. "
-                "Install it via `pip install httpx` or `pip install notifiers[async]`."
-            )
+            raise RuntimeError("The 'httpx' library is required for asynchronous requests. Install it via `pip install httpx` or `pip install notifiers[async]`.")
 
         if "timeout" not in kwargs:
             kwargs["timeout"] = httpx.Timeout(5.0, read=20.0)
@@ -192,4 +189,3 @@ async def async_get(url: str, *args, **kwargs) -> tuple:
 async def async_post(url: str, *args, **kwargs) -> tuple:
     """Send an async POST request. Returns a tuple of (response, errors)"""
     return await AsyncRequestsHelper.request(url, "post", *args, **kwargs)
-

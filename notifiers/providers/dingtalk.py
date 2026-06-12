@@ -107,9 +107,7 @@ class DingTalk(Provider):
         payload = self._prepare_data(data)
 
         headers = {"Content-Type": "application/json", "Accept": "application/json"}
-        response, errors = requests.post(
-            url, params=params, json=payload, headers=headers, path_to_errors=self.path_to_errors
-        )
+        response, errors = requests.post(url, params=params, json=payload, headers=headers, path_to_errors=self.path_to_errors)
 
         return self.create_response(payload, response, errors)
 
@@ -119,8 +117,6 @@ class DingTalk(Provider):
         payload = self._prepare_data(data)
 
         headers = {"Content-Type": "application/json", "Accept": "application/json"}
-        response, errors = await requests.async_post(
-            url, params=params, json=payload, headers=headers, path_to_errors=self.path_to_errors
-        )
+        response, errors = await requests.async_post(url, params=params, json=payload, headers=headers, path_to_errors=self.path_to_errors)
 
         return self.create_response(payload, response, errors)
